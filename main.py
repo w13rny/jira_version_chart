@@ -9,3 +9,4 @@ if __name__ == '__main__':
         password=cfg.jira['api_token'],
         cloud=True
     )
+    issues = jira.jql(cfg.jql_query)
