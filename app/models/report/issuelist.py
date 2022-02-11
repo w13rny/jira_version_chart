@@ -1,6 +1,6 @@
 from typing import List, Optional
 
-from app.models.jira.jiraissue import JiraIssue
+from app.models.jira.jira_issue import JiraIssue
 
 
 class IssueList:

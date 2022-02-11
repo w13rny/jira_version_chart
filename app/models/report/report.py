@@ -1,8 +1,8 @@
 from typing import List
 
-from app.models.jira.jiracomponent import JiraComponent
+from app.models.jira.jira_component import JiraComponent
 from app.models.report.issuelist import IssueList
-from app.models.jira.jiraissue import JiraIssue
+from app.models.jira.jira_issue import JiraIssue
 
 
 def has_component(issue: JiraIssue, component_name: str) -> bool:

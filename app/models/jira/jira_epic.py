@@ -1,7 +1,7 @@
 import os
 from typing import Optional
 
-from app.models.jira.jiraissuetype import JiraIssueType
+from app.models.jira.jira_issue_type import JiraIssueType
 
 
 class JiraEpic:

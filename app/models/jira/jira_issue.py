@@ -3,12 +3,12 @@ from datetime import datetime
 from typing import Optional, List
 import arrow
 
-from app.models.jira.jiracomponent import JiraComponent
-from app.models.jira.jiraepic import JiraEpic
-from app.models.jira.jiraissuetype import JiraIssueType
-from app.models.jira.jiraproject import JiraProject
-from app.models.jira.jiraresolution import JiraResolution
-from app.models.jira.jirastatus import JiraStatus
+from app.models.jira.jira_component import JiraComponent
+from app.models.jira.jira_epic import JiraEpic
+from app.models.jira.jira_issue_type import JiraIssueType
+from app.models.jira.jira_project import JiraProject
+from app.models.jira.jira_resolution import JiraResolution
+from app.models.jira.jira_status import JiraStatus
 
 
 class JiraIssue:
