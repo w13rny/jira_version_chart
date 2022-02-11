@@ -2,21 +2,25 @@
 
 This app creates simple web page that shows basic stats for components in your Jira project.
 
-
 All you must do is provide Jira data (URL, user name & API token) and JQL query for all issues you want to analyse.
 
-
 ## Installation
+
+### Python version
+
+This app was should work with `Python 3` interpreters. If you run into compatibility issues, try to use exact
+version `Python 3.8.2`.
+
 ### Quick way
 
-Just clone this repository and install with pip:
+Just clone this repository and install Python dependencies with `pip`:
 
 ```
 git clone https://github.com/w13rny/jira_version_chart.git
 pip install -r requirements.txt
 ```
 
-### Reccomended way
+### Recommended way
 
 Use `virtualenv` to create isolated Python environment for this app.
 
@@ -34,7 +38,7 @@ cd jira_version_chart
 virtualenv venv
 ```
 
-3. Activate virtual environment and install the python dependencies:
+3. Activate virtual environment and install the Python dependencies with `pip`:
 
 ```
 source venv/bin/activate
@@ -60,8 +64,17 @@ JQL_QUERY=''
 ```
 
 ## Run app
+
 ### Run Flask for develop
+
 ```
 $ python wsgi.py
 ```
+
 Website should run on `http://127.0.0.1:5000`
+
+When you finish using the app on virtual environment, remember to deactivate it in console:
+
+```
+deactivate
+```
