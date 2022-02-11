@@ -15,7 +15,7 @@ $ pip install -r requirements.txt
 
 ## Configuration
 
-Create .env file in main directory and fill it with following data:
+Create `.env` file in main directory and fill it with following data:
 
 ```
 # JIRA URL - e.g. 'https://company.atlassian.net/'
@@ -36,4 +36,4 @@ export JQL_QUERY=''
 ```
 $ python wsgi.py
 ```
-Website shoud run on ``http://127.0.0.1:5000``
+Website should run on `http://127.0.0.1:5000`
