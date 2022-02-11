@@ -38,6 +38,6 @@ class IssueList:
     @property
     def percent_resolved(self) -> Optional[float]:
         if self.all_story_points == 0:
-            return 0.0
+            return 100.0
         else:
             return self.resolved_story_points/self.all_story_points*100
