@@ -1,7 +1,7 @@
 from typing import List
 
 from app.models.jira.jira_component import JiraComponent
-from app.models.report.issuelist import IssueList
+from app.models.report.issue_list import IssueList
 from app.models.jira.jira_issue import JiraIssue
 
 

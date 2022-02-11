@@ -9,12 +9,14 @@ from app.models.jira.jira_issue_type import JiraIssueType
 from app.models.jira.jira_project import JiraProject
 from app.models.jira.jira_resolution import JiraResolution
 from app.models.jira.jira_status import JiraStatus
+from app.models.jira.jira_status_category import JiraStatusCategory
 
 
 class JiraIssue:
     key: str = ''
     summary: str = ''
     status: Optional[JiraStatus] = None
+    status_category: Optional[JiraStatusCategory] = None
     story_points: Optional[float] = None
     issue_type: Optional[JiraIssueType] = None
     resolution: Optional[JiraResolution] = None
@@ -29,6 +31,8 @@ class JiraIssue:
         self.summary = raw['fields']['summary']
         if raw['fields']['status']:
             self.status = JiraStatus(raw['fields']['status'])
+        if raw['fields']['status']['statusCategory']:
+            self.status_category = JiraStatusCategory(raw['fields']['status']['statusCategory'])
         if raw['fields']['customfield_10014']:
             self.story_points = raw['fields']['customfield_10014']
         if raw['fields']['resolution']:

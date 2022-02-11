@@ -62,7 +62,7 @@
                 <td><a href="{{ issue.url }}" target="_blank">{{ issue.summary }}</a></td>
                 <td>{% if issue.parent.summary %} {{ issue.parent.summary }} {% endif %}</td>
                 <td>{% if issue.story_points %} {{ issue.story_points|round|int }} {% endif %}</td>
-                <td class="has-text-centered">{{ render_status(issue.status.name) }}</td>
+                <td class="has-text-centered">{{ render_status(issue) }}</td>
                 {% endfor %}
             </tbody>
         </table>

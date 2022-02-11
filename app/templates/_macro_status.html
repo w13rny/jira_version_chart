@@ -1,9 +1,9 @@
-{% macro render_status(name) %}
-{% if name.upper() == 'TO DO' %}
-    <span class="tag is-light is-normal">TODO</span>
-{% elif name.upper() == 'DONE' %}
-    <span class="tag is-primary is-normal">DONE</span>
+{% macro render_status(issue) %}
+{% if issue.status_category.key.upper() == 'NEW' %}
+    <span class="tag is-light is-normal">{{ issue.status.name.upper() }}</span>
+{% elif issue.status_category.key.upper() == 'DONE' %}
+    <span class="tag is-primary is-normal">{{ issue.status.name.upper() }}</span>
 {% else %}
-    <span class="tag is-info is-normal">{{ name.upper() }}</span>
+    <span class="tag is-info is-normal">{{ issue.status.name.upper() }}</span>
 {% endif %}
 {% endmacro %}
