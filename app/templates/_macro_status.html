@@ -1,0 +1,9 @@
+{% macro render_status(name) %}
+{% if name.upper() == 'TO DO' %}
+    <span class="tag is-light is-normal">TODO</span>
+{% elif name.upper() == 'DONE' %}
+    <span class="tag is-primary is-normal">DONE</span>
+{% else %}
+    <span class="tag is-info is-normal">{{ name.upper() }}</span>
+{% endif %}
+{% endmacro %}

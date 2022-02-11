@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% from "_macro_issue_list.html" import render_issue_list %}
+
+{% block main_container %}
+
+    {% for issue_list in data.issues_with_components %}
+        {{ render_issue_list(issue_list) }}
+    {% endfor %}
+
+    {{ render_issue_list(data.issues_without_components) }}
+
+{% endblock %}
+
+{% block footer %}
+<footer class="footer">
+    <div class="content has-text-centered">
+        <p>
+            Skrypt <strong>Jira Version Chart</strong> wygenerował to zestawienie na bazie zapytania JQL:<br />
+            <code>{{ data.jql_query }}</code>
+        </p>
+    </div>
+</footer>
+{% endblock %}

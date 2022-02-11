@@ -1,0 +1,71 @@
+{% from "_macro_status.html" import render_status %}
+
+{% macro render_issue_list(data) %}
+<section class="section">
+    <div class="content">
+        <h1>{{ data.name }}</h1>
+    </div>
+
+    <nav class="level is-mobile">
+        <div class="level-item has-text-centered">
+            <div>
+                <p class="heading">Wszystie Story Pointy</p>
+                <p class="title">{{ data.all_story_points|round|int }}</p>
+            </div>
+        </div>
+        <div class="level-item has-text-centered">
+            <div>
+                <p class="heading">Zrealizowane Story Pointy</p>
+                <p class="title">{{ data.resolved_story_points|round|int }}</p>
+            </div>
+        </div>
+        <div class="level-item has-text-centered">
+            <div>
+                <p class="heading">Story Pointy w trakcie realizacji</p>
+                <p class="title">{{ data.story_points_in_progress|round|int }}</p>
+            </div>
+        </div>
+        <div class="level-item has-text-centered">
+            <div>
+                <p class="heading">Procent ukończenia</p>
+                <p class="title">{{ data.percent_resolved|round(1) }}%</p>
+            </div>
+        </div>
+    </nav>
+
+    <progress class="progress is-info" value="{{ data.resolved_story_points|round|int }}"
+              max="{{ data.all_story_points|round|int }}">{{ data.percent_resolved|round|int }}%</progress>
+
+    <div class="table-container">
+        <table class="table is-striped is-fullwidth">
+            <thead>
+            <tr class="has-text-centered">
+                <th></th>
+                <th></th>
+                <th>Klucz</th>
+                <th>Nazwa</th>
+                <th>Epik</th>
+                <th>SP</th>
+                <th>Status</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for issue in data.issues %}
+            <tr>
+                <td>{{ loop.index }}</td>
+                <td>
+                    <figure class="image is-16x16">
+                        <img src="{{ issue.issue_type.icon_url }}">
+                    </figure>
+                </td>
+                <td>{{ issue.key }}</td>
+                <td><a href="{{ issue.url }}" target="_blank">{{ issue.summary }}</a></td>
+                <td>{% if issue.parent.summary %} {{ issue.parent.summary }} {% endif %}</td>
+                <td>{% if issue.story_points %} {{ issue.story_points|round|int }} {% endif %}</td>
+                <td class="has-text-centered">{{ render_status(issue.status.name) }}</td>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</section>
+{% endmacro %}
