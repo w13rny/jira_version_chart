@@ -31,7 +31,7 @@ class IssueList:
     def story_points_in_progress(self) -> float:
         value = 0.0
         for issue in self.issues:
-            if issue.story_points and issue.status.name.upper() not in ['TO DO', 'DONE']:
+            if issue.story_points and issue.status_category.key.upper() not in ['NEW', 'DONE']:
                 value += issue.story_points
         return value
 
