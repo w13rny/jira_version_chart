@@ -10,8 +10,9 @@ def has_component(issue: JiraIssue, component_name: str) -> bool:
         for component in issue.components:
             if component.name == component_name:
                 return True
-            else:
-                return False
+        return False
+    else:
+        return False
 
 
 def has_no_components(issue: JiraIssue) -> bool:
