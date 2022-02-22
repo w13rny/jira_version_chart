@@ -8,7 +8,7 @@ class IssueList:
     name: str = None
 
     def __init__(self, name: str, issues: List[JiraIssue] = None):
-        self.issues = issues
+        self.issues = sorted(issues, key=lambda x: x.status_category.key)
         self.name = name
 
     @property
