@@ -33,7 +33,7 @@
         </div>
     </nav>
 
-    <progress class="progress is-info" value="{{ data.resolved_story_points|round|int }}"
+    <progress class="progress is-success" value="{{ data.resolved_story_points|round|int }}"
               max="{{ data.all_story_points|round|int }}">{{ data.percent_resolved|round|int }}%</progress>
 
     <div class="table-container">
