@@ -9,25 +9,25 @@
     <nav class="level is-mobile">
         <div class="level-item has-text-centered">
             <div>
-                <p class="heading">Wszystkie Story Pointy</p>
+                <p class="heading">Wszystkie SP</p>
                 <p class="title">{{ data.all_story_points|round|int }}</p>
             </div>
         </div>
         <div class="level-item has-text-centered">
             <div>
-                <p class="heading">Zrealizowane Story Pointy</p>
+                <p class="heading">Zrealizowane SP</p>
                 <p class="title">{{ data.resolved_story_points|round|int }}</p>
             </div>
         </div>
         <div class="level-item has-text-centered">
             <div>
-                <p class="heading">Story Pointy w trakcie realizacji</p>
+                <p class="heading">SP w trakcie realizacji</p>
                 <p class="title">{{ data.story_points_in_progress|round|int }}</p>
             </div>
         </div>
         <div class="level-item has-text-centered">
             <div>
-                <p class="heading">% zrealizowanych Story Pointów</p>
+                <p class="heading">% zrealizowanych SP</p>
                 <p class="title">{{ data.percent_resolved|round(1) }}%</p>
             </div>
         </div>
