@@ -1,4 +1,5 @@
-from typing import List, Optional
+from typing import List
+from re import sub
 
 from app.models.jira.jira_issue import JiraIssue
 
@@ -36,8 +37,13 @@ class IssueList:
         return value
 
     @property
-    def percent_resolved(self) -> Optional[float]:
+    def percent_resolved(self) -> float:
         if self.all_story_points == 0:
             return 100.0
         else:
             return self.resolved_story_points/self.all_story_points*100
+
+    @property
+    def data_target(self) -> str:
+        s = sub(r"(_|-)+", " ", self.name).title().replace(" ", "")
+        return ''.join([s[0].lower(), s[1:]])

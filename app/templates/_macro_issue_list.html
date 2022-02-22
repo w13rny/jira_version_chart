@@ -1,81 +1,69 @@
 {% from "_macro_status.html" import render_status %}
 
 {% macro render_issue_list(data) %}
-<section class="section">
-    <div class="content">
-        <h1>{{ data.name }}</h1>
-    </div>
-
-    <nav class="level is-mobile">
-        <div class="level-item has-text-centered">
-            <div>
-                <p class="heading">Wszystkie SP</p>
-                <p class="title">{{ data.all_story_points|round|int }}</p>
-            </div>
-        </div>
-        <div class="level-item has-text-centered">
-            <div>
-                <p class="heading">Zrealizowane SP</p>
-                <p class="title">{{ data.resolved_story_points|round|int }}</p>
-            </div>
-        </div>
-        <div class="level-item has-text-centered">
-            <div>
-                <p class="heading">SP w trakcie realizacji</p>
-                <p class="title">{{ data.story_points_in_progress|round|int }}</p>
-            </div>
-        </div>
-        <div class="level-item has-text-centered">
-            <div>
-                <p class="heading">% zrealizowanych SP</p>
-                <p class="title">{{ data.percent_resolved|round(1) }}%</p>
-            </div>
-        </div>
-    </nav>
-
-    <progress class="progress is-success" value="{{ data.resolved_story_points|round|int }}"
-              max="{{ data.all_story_points|round|int }}">{{ data.percent_resolved|round|int }}%</progress>
-
-    <div class="table-container">
-        <table class="table is-striped is-fullwidth">
-            <thead>
-            <tr class="has-text-centered">
-                <th></th>
-                <th></th>
-                <th>Klucz</th>
-                <th>Nazwa</th>
-                <th>Epik</th>
-                <th>SP</th>
-                <th>Status</th>
-            </tr>
-            </thead>
-            <tbody>
-            {% for issue in data.issues %}
-            <tr>
-                <td>{{ loop.index }}</td>
-                <td>
-                    <figure class="image is-16x16">
-                        <img src="{{ issue.issue_type.icon_url }}">
-                    </figure>
-                </td>
-                <td>{{ issue.key }}</td>
-                <td>
-                    <a href="{{ issue.url }}" target="_blank">{{ issue.summary }}</a>
-                    {% if issue.components and issue.components|length > 1 %}
-                        <p class="is-size-7">
-                        komponenty:
-                        {% for component in issue.components %}
-                            <strong>{{ component.name }}</strong>{{ ", " if not loop.last else "" }}
+<div class="card">
+    <header class="card-header">
+        <p class="card-header-title">
+            Lista zadań
+        </p>
+        <button class="card-header-icon toggle" data-target="{{ data.data_target }}">
+            <span class="icon">
+                <i class="fas fa-angle-down"></i>
+            </span>
+        </button>
+    </header>
+    <div class="card-content" id="{{ data.data_target }}">
+        <div class="content">
+            <div class="table-container">
+                <table class="table is-striped is-fullwidth">
+                    <thead>
+                    <tr class="has-text-centered">
+                        <th></th>
+                        <th></th>
+                        <th>Klucz</th>
+                        <th>Nazwa</th>
+                        <th>Epik</th>
+                        <th>SP</th>
+                        <th>Status</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for issue in data.issues %}
+                    <tr>
+                        <td>{{ loop.index }}</td>
+                        <td>
+                            <figure class="image is-16x16">
+                                <img src="{{ issue.issue_type.icon_url }}">
+                            </figure>
+                        </td>
+                        <td>{{ issue.key }}</td>
+                        <td>
+                            <a href="{{ issue.url }}" target="_blank">{{ issue.summary }}</a>
+                            {% if issue.components and issue.components|length > 1 %}
+                            <p class="is-size-7">
+                                komponenty:
+                                {% for component in issue.components %}
+                                <strong>{{ component.name }}</strong>{{ ", " if not loop.last else "" }}
+                                {% endfor %}
+                            </p>
+                            {% endif %}
+                        </td>
+                        <td>
+                            {% if issue.parent.summary %} {{ issue.parent.summary }} {% endif %}
+                        </td>
+                        <td class="has-text-centered">
+                            {% if issue.story_points %} {{ issue.story_points|round|int }} {% endif %}
+                        </td>
+                        <td class="has-text-centered">
+                            {{ render_status(issue) }}
+                        </td>
                         {% endfor %}
-                        </p>
-                    {% endif %}
-                </td>
-                <td>{% if issue.parent.summary %} {{ issue.parent.summary }} {% endif %}</td>
-                <td>{% if issue.story_points %} {{ issue.story_points|round|int }} {% endif %}</td>
-                <td class="has-text-centered">{{ render_status(issue) }}</td>
-                {% endfor %}
-            </tbody>
-        </table>
+                    </tbody>
+                </table>
+            </div>
+        </div>
     </div>
-</section>
+</div>
+
+
 {% endmacro %}

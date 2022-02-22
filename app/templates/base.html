@@ -5,16 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Jira Version Chart</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+    <script src="https://kit.fontawesome.com/6c93fcc5df.js" crossorigin="anonymous"></script>
     {% block scripts %}
     {% endblock %}
 </head>
 <body>
-<section class="section">
-    <div class="container">
-        {% block main_container %}
-        {% endblock %}
-    </div>
-</section>
+{% block body %}
+{% endblock %}
+
 {% block footer %}
 {% endblock %}
 </body>

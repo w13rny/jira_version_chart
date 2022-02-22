@@ -1,19 +1,37 @@
 {% extends "base.html" %}
+{% from "_macro_stats.html" import render_stats %}
 {% from "_macro_issue_list.html" import render_issue_list %}
 
-{% block main_container %}
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/toggle.js') }}"></script>
+{% endblock %}
+
+
+{% block body %}
+<section class="hero has-background-grey-lighter">
+    <div class="hero-body">
+        {{ render_stats(data.all_issues) }}
+    </div>
+</section>
+
 {% for issue_list in data.issues_with_components %}
+<section class="section">
+    {{ render_stats(issue_list) }}
     {{ render_issue_list(issue_list) }}
+</section>
 {% endfor %}
 
-{{ render_issue_list(data.issues_without_components) }}
+<section class="section">
+    {{ render_stats(data.issues_without_components) }}
+    {{ render_issue_list(data.issues_without_components) }}
+</section>
 {% endblock %}
 
 {% block footer %}
 <footer class="footer">
     <div class="content has-text-centered">
         <p>
-            Skrypt <strong>Jira Version Chart</strong> wygenerował to zestawienie na bazie zapytania JQL:<br />
+            Skrypt <strong>Jira Version Chart</strong> wygenerował to zestawienie na bazie zapytania JQL:<br/>
             <code>{{ data.jql_query }}</code>
         </p>
     </div>
