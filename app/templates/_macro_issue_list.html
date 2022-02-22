@@ -9,7 +9,7 @@
     <nav class="level is-mobile">
         <div class="level-item has-text-centered">
             <div>
-                <p class="heading">Wszystie Story Pointy</p>
+                <p class="heading">Wszystkie Story Pointy</p>
                 <p class="title">{{ data.all_story_points|round|int }}</p>
             </div>
         </div>
@@ -59,7 +59,10 @@
                     </figure>
                 </td>
                 <td>{{ issue.key }}</td>
-                <td><a href="{{ issue.url }}" target="_blank">{{ issue.summary }}</a></td>
+                <td>
+                    <a href="{{ issue.url }}" target="_blank">{{ issue.summary }}</a>
+                    {% if issue.components and issue.components|length > 1 %}*{% endif %}
+                </td>
                 <td>{% if issue.parent.summary %} {{ issue.parent.summary }} {% endif %}</td>
                 <td>{% if issue.story_points %} {{ issue.story_points|round|int }} {% endif %}</td>
                 <td class="has-text-centered">{{ render_status(issue) }}</td>

@@ -2,13 +2,11 @@
 {% from "_macro_issue_list.html" import render_issue_list %}
 
 {% block main_container %}
+{% for issue_list in data.issues_with_components %}
+    {{ render_issue_list(issue_list) }}
+{% endfor %}
 
-    {% for issue_list in data.issues_with_components %}
-        {{ render_issue_list(issue_list) }}
-    {% endfor %}
-
-    {{ render_issue_list(data.issues_without_components) }}
-
+{{ render_issue_list(data.issues_without_components) }}
 {% endblock %}
 
 {% block footer %}

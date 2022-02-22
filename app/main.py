@@ -17,7 +17,7 @@ jira = Jira(
 
 
 @app.route("/")
-def chart_page():
+def report_page():
     jql_query = os.environ.get('JQL_QUERY')
     start_at = 0
     issues = []
@@ -32,4 +32,4 @@ def chart_page():
         else:
             break
     report = Report(issues, jql_query)
-    return render_template('chart.html', data=report)
+    return render_template('report.html', data=report)
