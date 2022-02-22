@@ -15,13 +15,6 @@ def has_component(issue: JiraIssue, component_name: str) -> bool:
         return False
 
 
-def has_no_components(issue: JiraIssue) -> bool:
-    if issue.components:
-        return False
-    else:
-        return True
-
-
 class Report:
     jql_query: str = None
     all_components: List[JiraComponent] = None
@@ -49,5 +42,5 @@ class Report:
             issue_filter = filter(lambda x: has_component(x, component.name), all_issues_list)
             self.issues_with_components.append(IssueList(component.name, list(issue_filter)))
 
-        issues_without_components_filter = filter(has_no_components, all_issues_list)
+        issues_without_components_filter = filter(lambda x: not x.components, all_issues_list)
         self.issues_without_components = IssueList('Zadania bez komponentów', list(issues_without_components_filter))
