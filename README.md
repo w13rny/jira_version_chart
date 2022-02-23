@@ -14,7 +14,7 @@ version `Python 3.8.2`.
 You can check your Python version using command:
 
 ```
-python -v
+$ python -v
 ```
 
 ### Recommended way (with virtualenv)
@@ -24,22 +24,22 @@ Use `virtualenv` to create isolated Python environment for this app.
 1. Install `virtualenv` if you don't have it:
 
 ```
-pip install virtualenv
+$ pip install virtualenv
 ```
 
 2. Clone this repository and create a virtual environment:
 
 ```
-git clone https://github.com/w13rny/jira_version_chart.git
-cd jira_version_chart
-virtualenv venv
+$ git clone https://github.com/w13rny/jira_version_chart.git
+$ cd jira_version_chart
+$ virtualenv venv
 ```
 
 3. Activate virtual environment and install the Python dependencies with `pip`:
 
 ```
-source venv/bin/activate
-pip install -r requirements.txt
+$ source venv/bin/activate
+$ pip install -r requirements.txt
 ```
 
 ### Quick way (without virtualenv)
@@ -47,8 +47,8 @@ pip install -r requirements.txt
 Just clone this repository and install Python dependencies with `pip`:
 
 ```
-git clone https://github.com/w13rny/jira_version_chart.git
-pip install -r requirements.txt
+$ git clone https://github.com/w13rny/jira_version_chart.git
+$ pip install -r requirements.txt
 ```
 
 ## Configuration
@@ -82,5 +82,5 @@ Website should run on `http://127.0.0.1:5000`
 When you finish using the app on virtual environment, remember to deactivate it in console:
 
 ```
-deactivate
+$ deactivate
 ```
