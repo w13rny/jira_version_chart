@@ -6,21 +6,18 @@ All you must do is provide Jira data (URL, user name & API token) and JQL query 
 
 ## Installation
 
-### Python version
+### Prerequisites
 
 This app was should work with `Python 3` interpreters. If you run into compatibility issues, try to use exact
 version `Python 3.8.2`.
 
-### Quick way
-
-Just clone this repository and install Python dependencies with `pip`:
+You can check your Python version using command:
 
 ```
-git clone https://github.com/w13rny/jira_version_chart.git
-pip install -r requirements.txt
+python -v
 ```
 
-### Recommended way
+### Recommended way (with virtualenv)
 
 Use `virtualenv` to create isolated Python environment for this app.
 
@@ -42,6 +39,15 @@ virtualenv venv
 
 ```
 source venv/bin/activate
+pip install -r requirements.txt
+```
+
+### Quick way (without virtualenv)
+
+Just clone this repository and install Python dependencies with `pip`:
+
+```
+git clone https://github.com/w13rny/jira_version_chart.git
 pip install -r requirements.txt
 ```
 
